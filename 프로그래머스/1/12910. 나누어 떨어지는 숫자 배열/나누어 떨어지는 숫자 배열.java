@@ -14,7 +14,7 @@ class Solution {
         int[] answer = new int[intSize];
 
         if(tempInt.size()>0){
-            answer = tempInt.stream().mapToInt(i -> i).toArray();
+            answer = tempInt.parallelStream().mapToInt(i -> i).toArray();
         } else answer[0] = -1;
         return answer;
     }
