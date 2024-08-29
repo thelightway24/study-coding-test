@@ -14,7 +14,7 @@ class Solution {
         int[] answer = new int[intSize];
 
         if(tempInt.size()>0){
-            answer = tempInt.parallelStream().mapToInt(i -> i).toArray();
+            answer = tempInt.stream().mapToInt(i -> i).toArray(); // 고급 for문과 효율성 차이가 크지 않음
         } else answer[0] = -1;
         return answer;
     }
