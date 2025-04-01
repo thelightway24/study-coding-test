@@ -1,0 +1,12 @@
+SELECT
+    count(*) as COUNT
+FROM
+    ecoli_data
+WHERE
+(
+    GENOTYPE & 1 IS TRUE
+OR
+    GENOTYPE & 4 IS TRUE
+)
+AND
+    GENOTYPE & 2 IS FALSE
