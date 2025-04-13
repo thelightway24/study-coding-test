@@ -1,2 +1,21 @@
-# CodeTest
-This is an auto push repository for Baekjoon Online Judge created with [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub).
+# 🧠 코딩 테스트 문제 풀이
+이 레포지토리는 다양한 플랫폼(백준, 프로그래머스 등)에서 코딩 테스트 문제를 풀고 정리한 공간입니다.
+
+---
+
+## 📌 Directory 구조
+플랫폼 분류 > 레벨 분류로 구조화 되어있습니다.
+
+```bash
+├── 백준/          # 백준 문제 풀이
+│   ├── Bronze
+│   └── Sliver
+├── 프로그래머스/       # 프로그래머스 문제 풀이
+│   ├── 0
+│   └── 1
+│   └── 2
+└── README.md
+```
+
+[2025-04-11-TIL](https://www.techlog.dev/2025/04/til-250411.html)
+‎프로그래머스/1/12931. 자릿수 더하기/
