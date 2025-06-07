@@ -21,11 +21,12 @@ public class Main {
 				String text = command.substring(2);
 				iterator.add(text);
 			} else {
-				if("L".equals(command)){
+				char c = command.charAt(0);
+				if(c == 'L'){
 					if(iterator.hasPrevious()) iterator.previous();
-				} else if("D".equals(command)){
+				} else if(c == 'D'){
 					if(iterator.hasNext()) iterator.next();
-				} else if("B".equals(command)){
+				} else if(c == 'B'){
 					if(iterator.hasPrevious()){
 						iterator.previous();
 						iterator.remove();
