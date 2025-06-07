@@ -1,10 +1,10 @@
-
 import java.io.*;
 import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		LinkedList<String> input = new LinkedList<>();
 
 		String s = br.readLine();
@@ -36,6 +36,7 @@ public class Main {
 		}
 		StringBuilder sb = new StringBuilder(input.size());
 		input.forEach(sb::append);
-		System.out.println(sb);
+		bw.write(sb.toString());
+		bw.flush();
 	}
 }
