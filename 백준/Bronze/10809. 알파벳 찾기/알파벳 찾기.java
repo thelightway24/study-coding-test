@@ -2,9 +2,8 @@ import java.io.*;
 import java.util.*;
 public class Main{
     public static void main (String[] args) throws Exception {
-        int[] result = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-                        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-                        -1, -1, -1, -1, -1, -1};
+        int[] result = new int[26];
+        Arrays.fill(result, -1);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         char[] text = br.readLine().toCharArray();
         for(int i=0; i<text.length; i++){
