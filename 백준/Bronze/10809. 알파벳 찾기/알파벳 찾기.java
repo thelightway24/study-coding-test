@@ -11,6 +11,11 @@ public class Main{
                 result[text[i] - 'a']= i;
             }
         }
-        Arrays.stream(result).forEach(i -> System.out.print(i + " "));
+        StringBuilder pr = new StringBuilder();
+        for(int i=0; i<result.length; i++){
+            pr.append(result[i])
+              .append(" ");    
+        }
+        System.out.print(pr);
     }
 }
