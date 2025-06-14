@@ -1,14 +1,15 @@
+
 import java.io.*;
 import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		Deque<Integer> a = new LinkedList<>();
+		Deque<Integer> a = new ArrayDeque<>();
 
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		int count = Integer.parseInt(st.nextToken());
-		int pollIndex = Integer.parseInt(st.nextToken());
+		String[] s = br.readLine().split(" ");
+		int count = Integer.parseInt(s[0]);
+		int pollIndex = Integer.parseInt(s[1]);
 		for (int i = 1; i <= count; i++) {
 			a.add(i);
 		}
