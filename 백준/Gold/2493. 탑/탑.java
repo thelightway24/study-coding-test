@@ -5,31 +5,26 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
-		Deque<int[]> stack = new ArrayDeque<>();
-		StringBuilder sb = new StringBuilder();
+
+
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		int index = 0;
-		while (n-- > 0) {
-			index++;
-			int topH = Integer.parseInt(st.nextToken());
-			int temp = 0;
-			boolean found = false;
+		int[] height = new int[n];
+		for (int i = 0; i < n; i++) {
+			height[i] = Integer.parseInt(st.nextToken());
+		}
 
-			while(!stack.isEmpty()) {
-				if(topH <= stack.peek()[0]){
-					sb.append(stack.peek()[1]).append(" ");
-					found = true;
-					break;
-				} else {
-					stack.pop();
-				}
+		StringBuilder sb = new StringBuilder();
+		Deque<Integer> stack = new ArrayDeque<>();
+		for(int i = 0; i < n; i++) {
+			while(!stack.isEmpty() && height[stack.peek()] < height[i]) {
+				stack.pop();
 			}
-			if(!found){
-				sb.append(0).append(" ");
+			if(stack.isEmpty()) {
+				sb.append('0').append(' ');
+			} else {
+				sb.append(stack.peek() + 1).append(' ');
 			}
-
-			stack.push(new int[]{topH, index});
-
+			stack.push(i);
 		}
 		System.out.println(sb);
 	}
