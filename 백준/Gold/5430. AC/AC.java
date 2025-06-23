@@ -17,8 +17,9 @@ public class Main {
 		char[] commands = br.readLine().toCharArray();
 		br.readLine();
 		// 배열에 들어있는 수
-		String input = br.readLine().replace("[","").replace("]","");
-		StringTokenizer st = new StringTokenizer(input, ",");
+		String input = br.readLine();
+		StringTokenizer st = new StringTokenizer(input.substring(1,input.length()-1), ",");
+
 		Deque<Integer> deque = new ArrayDeque<>();
 		while(st.hasMoreTokens()){
 			deque.offerLast(Integer.parseInt(st.nextToken()));
