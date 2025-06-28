@@ -1,0 +1,10 @@
+SELECT NAME
+FROM
+    ANIMAL_INS
+WHERE 
+(
+    SELECT
+        MIN(DATETIME)
+    FROM
+        ANIMAL_INS
+) = DATETIME
