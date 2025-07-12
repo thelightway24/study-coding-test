@@ -6,17 +6,6 @@ public class Main {
 	static boolean[] visit;
 	static int[][] graph;
 
-	public static void dfs(int v) throws IOException {
-		visit[v] = true;
-		bw.write(v + " ");
-
-		for (int i = 1; i < graph.length; i++) {
-			if (graph[v][i] == 1 && !visit[i]) {
-				dfs(i);
-			}
-		}
-	}
-
 	public static void bfs(int v) throws IOException {
 		Queue<Integer> queue = new LinkedList<>();
 		queue.add(v);
@@ -63,5 +52,16 @@ public class Main {
 		visit = new boolean[N + 1];
 		bfs(V);
 		bw.flush();
+	}
+
+	public static void dfs(int v) throws IOException {
+		visit[v] = true;
+		bw.write(v + " ");
+
+		for (int i = 1; i < graph.length; i++) {
+			if (graph[v][i] == 1 && !visit[i]) {
+				dfs(i);
+			}
+		}
 	}
 }
