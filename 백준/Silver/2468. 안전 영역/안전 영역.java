@@ -30,9 +30,7 @@ public class Main {
 		int result = 0;
 
 		for (int water = 0; water <= maxLevel; water++) {
-			for (int i = 1; i <= N; i++) {
-				visit = new boolean[N + 1][N + 1];
-			}
+			visit = new boolean[N + 1][N + 1];
 
 			int safe = 0;
 			for (int i = 1; i <= N; i++) {
