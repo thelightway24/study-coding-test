@@ -64,4 +64,43 @@ public class Main {
 		}
 		return -1;
 	}
+
+	static int solve2() throws Exception {
+		int size = Integer.parseInt(br.readLine());
+		boolean[][] visit = new boolean[size][size];
+
+		StringTokenizer curPosToken = new StringTokenizer(br.readLine());
+		Pos curPos = new Pos(Integer.parseInt(curPosToken.nextToken()), Integer.parseInt(curPosToken.nextToken()));
+		StringTokenizer tarPosToken = new StringTokenizer(br.readLine());
+		Pos tarPos = new Pos(Integer.parseInt(tarPosToken.nextToken()), Integer.parseInt(tarPosToken.nextToken()));
+
+		Queue<Pos> q = new LinkedList<>();
+		q.add(curPos);
+		visit[curPos.x][curPos.y] = true;
+        	int result = 0;
+		while(!q.isEmpty()){
+			int qs = q.size();
+			for(int t=0; t<qs; t++){
+				Pos p = q.poll();
+				if(p.equals(tarPos)){
+					return result;
+				}
+				for(int i=0; i<8; i++){
+					int nextX = p.x + dx[i];
+					int nextY = p.y + dy[i];
+					if (nextX < 0 || nextX > size - 1 || nextY < 0 || nextY > size - 1) {
+						continue;
+					}
+					if(!visit[nextX][nextY]){
+						Pos next = new Pos(nextX, nextY);
+						next.cnt = p.cnt + 1;
+						q.add(next);
+						visit[nextX][nextY] = true;
+					}
+				}
+			}
+            result++;
+		}
+		return -1;
+	}
 }
