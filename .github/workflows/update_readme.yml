@@ -4,7 +4,10 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-
+  
+permissions:
+  contents: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,3 +19,9 @@ jobs:
 
       - name: Generate README.md
         run: node .github/workflows/update_readme.js
+        
+      - name: Commit & Push README.md
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Git-Action: Update Readme'
+          branch: main
