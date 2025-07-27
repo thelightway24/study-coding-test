@@ -6,6 +6,24 @@ const ROOTS = [
   { platform: '프로그래머스', path: '프로그래머스' }
 ];
 
+function getFilesDfs(dir, basePath) {
+  let results = [];
+  const list = fs.readdirSync(dir);
+
+  list.forEach(file => {
+    const fullPath = path.join(dir, file);
+    const relPath = path.relative(basePath, fullPath);
+    const stat = fs.statSync(fullPath);
+    if (stat && stat.isDirectory()) {
+      results = results.concat(getFilesDfs(fullPath, basePath));
+    } else if (stat && stat.isFile()) {
+      results.push(relPath);
+    }
+  });
+
+  return results;
+}
+
 function getFileTable(platform, basePath) {
   if (!fs.existsSync(basePath)) return '';
   const levels = fs.readdirSync(basePath).filter(x => fs.statSync(path.join(basePath, x)).isDirectory());
@@ -13,9 +31,12 @@ function getFileTable(platform, basePath) {
 
   levels.forEach(level => {
     const levelPath = path.join(basePath, level);
-    const files = fs.readdirSync(levelPath)
-      .filter(f => fs.statSync(path.join(levelPath, f)).isFile())
-      .map(f => `[${f}](./${encodeURIComponent(basePath)}/${encodeURIComponent(level)}/${encodeURIComponent(f)})`);
+    if (!fs.existsSync(levelPath) || !fs.statSync(levelPath).isDirectory()) return;
+
+    const files = getFilesDfs(levelPath, levelPath)
+      .map(relPath =>
+        `[${relPath.replace(/\\/g, '/')}](${encodeURI('./' + basePath + '/' + level + '/' + relPath).replace(/\\/g, '/')})`
+      );
     table += `| ${level} | ${files.join('<br>')} |\n`;
   });
   return table + '\n';
