@@ -38,7 +38,14 @@ function getOrderedLevels(platform, basePath) {
 function getProblemDirs(levelPath) {
   if (!fs.existsSync(levelPath)) return [];
   return fs.readdirSync(levelPath)
-    .filter(n => fs.statSync(path.join(levelPath, n)).isDirectory());
+    .filter(n => fs.statSync(path.join(levelPath, n)).isDirectory())
+    .sort((a, b) => {
+      const aMatch = a.match(/^(\d+)/);
+      const bMatch = b.match(/^(\d+)/);
+      const aNum = aMatch ? parseInt(aMatch[1], 10) : 0;
+      const bNum = bMatch ? parseInt(bMatch[1], 10) : 0;
+      return aNum - bNum;
+    });
 }
 
 function parseProblemDirName(dirName) {
