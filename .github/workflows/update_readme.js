@@ -52,8 +52,8 @@ function makeLink(basePath, level, dir) {
 }
 
 function createTableHeader() {
-  return `| 레벨 | 문제 번호 | 문제 이름 |\n` +
-         `|:----:|:--------:|:----------|\n`;
+  return `| 문제 번호 | 문제 이름 |\n` +
+         `|:--------:|:----------|\n`;
 }
 
 function getFileTable(platform, basePath) {
@@ -75,7 +75,7 @@ function getFileTable(platform, basePath) {
         if (!files.some(f => cat.exts.includes(path.extname(f).toLowerCase()))) return;
         const { no } = parseProblemDirName(dir);
         const link = makeLink(basePath, level, dir);
-        rows += `| ${level} | ${no} | ${link} |\n`;
+        rows += `| ${no} | ${link} |\n`;
       });
 
       if (rows) {
@@ -123,5 +123,3 @@ ROOTS.forEach(({ platform, path: basePath }) => {
 });
 
 fs.writeFileSync('README.md', content, 'utf8');
-console.log('README.md가 생성되었습니다.');
-console.log(content);
