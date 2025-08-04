@@ -9,6 +9,9 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
 		map = new int[n][n];
+
+		StringBuilder result = new StringBuilder();
+
 		for (int i = 0; i < n; i++) {
 			int[] inputArr = Arrays.stream(br.readLine().split(" "))
 				.mapToInt(Integer::parseInt)
@@ -16,9 +19,10 @@ public class Main {
 			System.arraycopy(inputArr, 0, map[i], 0, n);
 		}
 		solve(0, 0, n);
-		System.out.println(count[0]);
-		System.out.println(count[1]);
-		System.out.println(count[2]);
+		result.append(count[0]).append("\n")
+			.append(count[1]).append("\n")
+			.append(count[2]);
+		System.out.println(result);
 	}
 
 	static void solve(int x, int y, int size) {
